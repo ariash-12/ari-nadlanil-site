@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#172521">
+  <meta name="description" content="הצהרת הנגישות של ארי (צ'רלס) אשכנזי - התאמות הנגישות באתר, פרטי רכז הנגישות ודרכי פנייה. Accessibility statement of Charles Ashkenazi.">
+  <title>הצהרת נגישות | ארי אשכנזי</title>
+  <link rel="canonical" href="https://ari-nadlanil.com/negishut.html">
+  <link rel="stylesheet" href="assets/site.css">
+<!-- AIOS 20/10/2026: negishut v1.0.0 (Brain, 3e2d01d3f9) with site colors; EN pages get English labels and ltr.
+     ═══════════════════════════════════════════════════════════════════
+     ערכת נגישות לדפי נחיתה - קטע הקוד שמדביקים בכל דף
+     מדביקים פעם אחת בתוך <head> של כל דף באתר.
+     אחרי הרצת setup.py השתמשו בקובץ output/a11y-snippet-ready.html
+
+     Zero-impact by default (Eden's directive, page-standard.md):
+     - Regular visitors see ONLY a small round a11y button (bottom-left).
+     - Focus outline appears via :focus-visible - keyboard users only.
+     - Skip-link hidden until keyboard-focused.
+     - All visual adjustments (text size / contrast / links / motion /
+       readable font) apply ONLY when chosen; saved in localStorage.
+     - The menu links to the accessibility statement (legal requirement).
+     ═══════════════════════════════════════════════════════════════════ -->
+<style>
+  /* Keyboard-only focus - mouse users never see this */
+  :focus-visible { outline: 3px solid #a66c4b !important; outline-offset: 2px !important; border-radius: 4px; }
+  /* Skip link - visible only on keyboard focus */
+  .brain-skip { position: fixed; top: -60px; right: 12px; z-index: 100000; background: #172521; color: #fff;
+    padding: 10px 18px; border-radius: 10px; font-size: 15px; text-decoration: none; transition: top .15s; }
+  .brain-skip:focus { top: 12px; }
+  /* Opt-in modes */
+  html.a11y-fs1 body { zoom: 1.12; } html.a11y-fs2 body { zoom: 1.25; }
+  html.a11y-contrast { filter: contrast(1.25); }
+  html.a11y-links a { text-decoration: underline !important; font-weight: 700 !important; }
+  html.a11y-nomotion *, html.a11y-nomotion *::before, html.a11y-nomotion *::after {
+    animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+  html.a11y-font body, html.a11y-font body * { font-family: Arial, Helvetica, sans-serif !important; }
+  /* The button + menu */
+  #brain-a11y-btn { position: fixed; bottom: 18px; left: 18px; z-index: 99999; width: 44px; height: 44px;
+    border-radius: 50%; border: none; cursor: pointer; background: #172521; color: #fff;
+    display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 10px rgba(23,37,33,.35); padding: 0; }
+  #brain-a11y-btn:hover { background: #a66c4b; }
+  #brain-a11y-menu { position: fixed; bottom: 72px; left: 18px; z-index: 99999; background: #fff; color: #172521;
+    border-radius: 14px; box-shadow: 0 6px 30px rgba(23,37,33,.25); padding: 14px; width: 230px; display: none;
+    direction: rtl; text-align: right; font-family: Arial, sans-serif; font-size: 14px; }
+  #brain-a11y-menu.open { display: block; }
+  #brain-a11y-menu h2 { font-size: 15px; margin: 0 0 10px; }
+  #brain-a11y-menu button { display: block; width: 100%; margin: 4px 0; padding: 8px 10px; border-radius: 8px;
+    border: 1px solid #d9d2c6; background: #f4f0e9; cursor: pointer; font-size: 13px; text-align: right; color: #172521; }
+  #brain-a11y-menu button[aria-pressed="true"] { background: #a66c4b; color: #fff; border-color: #a66c4b; }
+  #brain-a11y-menu a { display: block; margin-top: 10px; font-size: 12px; color: #a66c4b; }
+</style>
+<script>
+(function () {
+  var MODES = [
+    ["fs", "הגדלת טקסט", 2],            // cycles: off → fs1 → fs2
+    ["contrast", "ניגודיות מוגברת", 1],
+    ["links", "הדגשת קישורים", 1],
+    ["nomotion", "עצירת אנימציות", 1],
+    ["font", "גופן קריא", 1]
+  ];
+  var KEY = "brain_a11y";
+
+  function state() { try { return JSON.parse(localStorage.getItem(KEY) || "{}"); } catch (e) { return {}; } }
+  function apply(s) {
+    var h = document.documentElement;
+    h.classList.toggle("a11y-fs1", s.fs === 1); h.classList.toggle("a11y-fs2", s.fs === 2);
+    ["contrast", "links", "nomotion", "font"].forEach(function (m) { h.classList.toggle("a11y-" + m, !!s[m]); });
+  }
+
+  function build() {
+    if (document.getElementById("brain-a11y-btn")) return; // pasted twice - once is enough
+    // Skip link (target: <main> or first <h1>'s section)
+    if (!document.getElementById("brain-main")) {
+      var m = document.querySelector("main") || document.querySelector("h1");
+      if (m) m.id = m.id || "brain-main";
+    }
+    var skip = document.createElement("a");
+    skip.className = "brain-skip"; skip.href = "#" + ((document.querySelector("main,h1") || {}).id || "brain-main");
+    skip.textContent = "דילוג לתוכן"; document.body.prepend(skip);
+
+    var btn = document.createElement("button");
+    btn.id = "brain-a11y-btn"; btn.setAttribute("aria-label", "פתיחת תפריט נגישות");
+    btn.setAttribute("aria-expanded", "false"); btn.setAttribute("aria-controls", "brain-a11y-menu");
+    btn.innerHTML = '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="4.5" r="2.2" fill="currentColor"/><path d="M12 8c-3 0-5.5-.6-7-1l.5 2c1.5.5 3.5.8 5 .9v3.1l-2.3 6.2 1.9.8 2-5.5h-.2 2.2l2 5.5 1.9-.8L15.5 13V9.9c1.5-.1 3.5-.4 5-.9l.5-2c-1.5.4-4 1-7 1h-2z" fill="currentColor"/></svg>';
+
+    var menu = document.createElement("div");
+    menu.id = "brain-a11y-menu"; menu.setAttribute("role", "dialog"); menu.setAttribute("aria-label", "אפשרויות נגישות");
+    menu.innerHTML = "<h2>נגישות</h2>";
+    MODES.forEach(function (mode) {
+      var b = document.createElement("button");
+      b.textContent = mode[1]; b.dataset.mode = mode[0]; b.setAttribute("aria-pressed", "false");
+      b.onclick = function () {
+        var s = state();
+        if (mode[0] === "fs") { s.fs = ((s.fs || 0) + 1) % 3; b.setAttribute("aria-pressed", s.fs ? "true" : "false"); }
+        else { s[mode[0]] = !s[mode[0]]; b.setAttribute("aria-pressed", s[mode[0]] ? "true" : "false"); }
+        localStorage.setItem(KEY, JSON.stringify(s)); apply(s);
+      };
+      menu.appendChild(b);
+    });
+    var reset = document.createElement("button");
+    reset.textContent = "איפוס"; reset.onclick = function () { localStorage.removeItem(KEY); apply({});
+      menu.querySelectorAll("[aria-pressed]").forEach(function (b) { b.setAttribute("aria-pressed", "false"); }); };
+    menu.appendChild(reset);
+    var link = document.createElement("a");
+    link.href = "https://ari-nadlanil.com/negishut.html"; link.textContent = "הצהרת נגישות";
+    menu.appendChild(link);
+
+    // Permanent text link in the page footer (legal best practice: the statement
+    // must be reachable even if this widget fails to load elsewhere). Inherits
+    // the footer's own styling - visually just one more footer word.
+    var foot = document.querySelector("footer");
+    if (foot && !foot.querySelector('a[href*="negishut"]')) {
+      var fl = document.createElement("a");
+      fl.href = "https://ari-nadlanil.com/negishut.html"; fl.textContent = "הצהרת נגישות";
+      fl.style.color = "inherit"; fl.style.marginRight = "6px";
+      foot.appendChild(document.createTextNode(" · "));
+      foot.appendChild(fl);
+    }
+
+    btn.onclick = function () {
+      var open = menu.classList.toggle("open");
+      btn.setAttribute("aria-expanded", open ? "true" : "false");
+    };
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && menu.classList.contains("open")) { menu.classList.remove("open"); btn.setAttribute("aria-expanded", "false"); btn.focus(); }
+    });
+    document.body.appendChild(btn); document.body.appendChild(menu);
+
+    // Restore saved prefs + reflect on buttons
+    var s = state(); apply(s);
+    menu.querySelectorAll("[data-mode]").forEach(function (b) {
+      var m = b.dataset.mode;
+      b.setAttribute("aria-pressed", (m === "fs" ? !!s.fs : !!s[m]) ? "true" : "false");
+    });
+  }
+
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", build);
+  else build();
+})();
+</script>
+</head>
+<body class="policy-page">
+  <a class="skip" href="#main">דילוג לתוכן</a>
+  <header class="site-header"><div class="shell nav"><a class="wordmark" href="index.html" aria-label="ארי אשכנזי, עמוד הבית"><span>ARI<span class="mark-dot">.</span></span><small>ASHKENAZI</small></a><nav aria-label="ניווט"><a href="en/" lang="en" hreflang="en" class="lang-switch">English</a><a href="index.html">לעמוד הבית <span aria-hidden="true">↖</span></a></nav></div></header>
+  <main id="main">
+    <div class="policy-hero"><div class="shell policy-hero-grid"><div><p class="eyebrow"><span class="eyebrow-line"></span> ACCESSIBILITY / נגישות</p><h1>הצהרת <em>נגישות.</em></h1><p>התאמות הנגישות באתר, ואיך פונים אליי כשמשהו לא עובד.</p><div class="policy-lang"><a href="#hebrew">עברית</a><a href="#english" lang="en">English</a></div></div><img src="assets/ari-contact.webp" alt="ארי אשכנזי" width="1350" height="1800"></div></div>
+    <div class="shell policy-content">
+      <section id="hebrew" aria-labelledby="he-title"><div class="section-label"><span>01</span><span>עברית</span></div><div class="policy-text">
+        <h2 id="he-title">הצהרת נגישות</h2>
+        <p class="policy-date">עודכן לאחרונה: 20 באוקטובר 2026 · ההצהרה נבדקת ומתעדכנת לפחות אחת לשנה</p>
+        <h3>על מה ההצהרה הזו חלה</h3>
+        <p>הצהרה זו חלה על האתר ari-nadlanil.com של ארי (צ'רלס) אשכנזי. אנחנו רואים חשיבות עליונה במתן שירות שוויוני ונגיש לכלל הציבור, ובכלל זה לאנשים עם מוגבלות, ופועלים באופן שוטף להנגשת האתר והתכנים שבו.</p>
+        <h3>התקן שאנחנו עובדים לפיו</h3>
+        <p>התאמות הנגישות מבוצעות בהתאם לחוק שוויון זכויות לאנשים עם מוגבלות, התשנ"ח-1998, ולתקנות שוויון זכויות לאנשים עם מוגבלות (התאמות נגישות לשירות), התשע"ג-2013, לפי הנדרש בתקן הישראלי ת"י 5568 ברמה AA (המבוסס על הנחיות WCAG 2.0 הבינלאומיות).</p>
+        <h3>מה תמצאו באתר</h3>
+        <ul>
+          <li>האתר תוכנן לניווט באמצעות מקלדת, כולל סימון מוקד (פוקוס) ברור וקישור "דילוג לתוכן"</li>
+          <li>התאמה לקוראי מסך: מבנה כותרות מסודר, טקסט חלופי (alt) לתמונות ותוויות לשדות טפסים</li>
+          <li>הגדרת שפה עברית ותצוגה מלאה מימין לשמאל; בדפים באנגלית, הגדרת שפה אנגלית ותצוגה משמאל לימין</li>
+          <li>תפריט נגישות זמין בדפים (הכפתור העגול בפינה השמאלית התחתונה): הגדלת טקסט, ניגודיות מוגברת, הדגשת קישורים, עצירת אנימציות וגופן קריא - ההעדפות נשמרות לביקורים הבאים</li>
+        </ul>
+        <h3>רכיבים של ספקים חיצוניים</h3>
+        <p>ייתכן שחלק מהשירותים באתר משולבים ברכיבים של צדדים שלישיים - למשל עמודי סליקה, טפסים חיצוניים או סרטונים מוטמעים - שנגישותם באחריות ספקיהם ואינה בשליטתנו המלאה. נתקלתם בקושי ברכיב כזה? פנו אלינו ונשלים אתכם את הפעולה בדרך חלופית נגישה.</p>
+        <h3>מגבלות ידועות</h3>
+        <p>אנחנו פועלים להנגיש את כלל הדפים והתכנים, ועדיין ייתכן שתמצאו רכיב שטרם הונגש במלואו. כל פנייה מטופלת, ובינתיים נספק את המידע בדרך חלופית נגישה - מסמך מונגש, תמליל או מענה אנושי.</p>
+        <h3>רכז הנגישות</h3>
+        <p><strong>שם:</strong> ארי (צ'רלס) אשכנזי<br><strong>דוא"ל:</strong> <a href="mailto:ari@ari-nadlanil.com">ari@ari-nadlanil.com</a><br><strong>טלפון:</strong> <a href="tel:+972585554201" dir="ltr">058-5554201</a><br><strong>כתובת:</strong> רבי יהודה הנשיא 18, דירה 11, רמת גן 5237660</p>
+        <p>אפשר לפנות אלינו לדיווח על בעיית נגישות, לבקשת מידע או מסמך בפורמט נגיש, או לבקשת התאמה אישית. נאשר את קבלת הפנייה בתוך יום עסקים אחד, ונטפל בה בתוך 5 ימי עסקים לכל היותר. מועיל לצרף את כתובת הדף ותיאור קצר של הקושי.</p>
+        <p>לא קיבלתם מענה מספק? עומדת לכם הזכות לפנות לנציבות שוויון זכויות לאנשים עם מוגבלות במשרד המשפטים.</p>
+      </div></section>
+      <section id="english" lang="en" dir="ltr" aria-labelledby="en-title"><div class="section-label"><span>02</span><span>ENGLISH</span></div><div class="policy-text">
+        <h2 id="en-title">Accessibility Statement</h2>
+        <p class="policy-date">Last updated: 20 October 2026 · Reviewed and updated at least once a year</p>
+        <h3>What this statement covers</h3>
+        <p>This statement covers ari-nadlanil.com, the website of Charles (Ari) Ashkenazi. We care about giving equal and accessible service to everyone, including people with disabilities, and we keep working to make the site and its content accessible.</p>
+        <h3>The standard we follow</h3>
+        <p>Accessibility adjustments follow Israel's Equal Rights for Persons with Disabilities Law, 1998, and its Accessibility Regulations for Services, 2013, as required by Israeli Standard IS 5568 at level AA (based on the international WCAG 2.0 guidelines).</p>
+        <h3>What you will find on the site</h3>
+        <ul>
+          <li>Keyboard navigation, with a clear focus indicator and a "skip to content" link</li>
+          <li>Screen reader support: an orderly heading structure, alternative text (alt) for images, and labels for form fields</li>
+          <li>Language set correctly on every page: Hebrew pages right to left, English pages left to right</li>
+          <li>An accessibility menu on every page (the round button at the bottom left): larger text, higher contrast, highlighted links, stop animations and a readable font. Your choices are remembered for next time</li>
+        </ul>
+        <h3>Third-party components</h3>
+        <p>Some services may include components from third parties, such as payment pages, external forms or embedded videos, whose accessibility is the responsibility of their providers. If you have difficulty with one of them, contact us and we will help you complete the action in an accessible way.</p>
+        <h3>Known limitations</h3>
+        <p>We work to make every page and piece of content accessible, but you may still find something that is not fully accessible yet. Every request is handled, and in the meantime we will provide the information in an accessible alternative, such as an accessible document, a transcript or a personal reply.</p>
+        <h3>Accessibility coordinator</h3>
+        <p><strong>Name:</strong> Charles (Ari) Ashkenazi<br><strong>Email:</strong> <a href="mailto:ari@ari-nadlanil.com">ari@ari-nadlanil.com</a><br><strong>Phone:</strong> <a href="tel:+972585554201">+972 58-555-4201</a><br><strong>Address:</strong> 18 Rabbi Yehuda HaNasi St, Apt 11, Ramat Gan 5237660, Israel</p>
+        <p>You can contact us to report an accessibility problem, to ask for information or a document in an accessible format, or to request a personal adjustment. We will confirm receipt within one business day and handle the request within 5 business days at most. Including the page address and a short description of the difficulty helps.</p>
+        <p>Not satisfied with the response? You have the right to contact the Commission for Equal Rights of Persons with Disabilities at Israel's Ministry of Justice.</p>
+      </div></section>
+    </div>
+  </main>
+  <footer class="site-footer"><div class="shell footer-grid"><div><a class="wordmark footer-mark" href="index.html"><span>ARI<span class="mark-dot">.</span></span><small>ASHKENAZI</small></a><p>נדל"ן יוקרה בנתניה · Luxury real estate in Netanya</p></div><div class="footer-legal"><p>ארי (צ'רלס) אשכנזי / Charles Ashkenazi</p><p>עוסק מורשה 339792376</p><p>רבי יהודה הנשיא 18, דירה 11, רמת גן 5237660</p><p><a href="mailto:ari@ari-nadlanil.com">ari@ari-nadlanil.com</a> · <a href="tel:+972585554201" dir="ltr">058-5554201</a></p></div><div class="footer-links"><a href="index.html">עמוד הבית</a><a href="en/" lang="en" hreflang="en">Home (English)</a><a href="privacy.html">מדיניות פרטיות / Privacy Policy</a><a href="#main">חזרה למעלה ↑</a></div></div><div class="shell footer-bottom"><span>© 2026 ARI ASHKENAZI</span><span>NETANYA · ISRAEL</span></div></footer>
+</body>
+</html>

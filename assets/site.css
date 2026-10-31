@@ -1,4 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;500;600;700&family=DM+Sans:wght@400;500;600&display=swap');
+/* Fonts self-hosted (OFL, see fonts/OFL.txt) - no request to Google */
+@font-face{font-family:'Assistant';font-style:normal;font-weight:300 700;font-display:swap;src:url('fonts/assistant-hebrew.woff2') format('woff2');unicode-range:U+0307-0308, U+0590-05FF, U+200C-2010, U+20AA, U+25CC, U+FB1D-FB4F}
+@font-face{font-family:'Assistant';font-style:normal;font-weight:300 700;font-display:swap;src:url('fonts/assistant-latin-ext.woff2') format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF}
+@font-face{font-family:'Assistant';font-style:normal;font-weight:300 700;font-display:swap;src:url('fonts/assistant-latin.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'DM Sans';font-style:normal;font-weight:400 600;font-display:swap;src:url('fonts/dmsans-latin-ext.woff2') format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF}
+@font-face{font-family:'DM Sans';font-style:normal;font-weight:400 600;font-display:swap;src:url('fonts/dmsans-latin.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
 :root{--paper:#f4f0e9;--paper2:#eae5db;--ink:#172521;--muted:#62706a;--copper:#a66c4b;--line:#d9d2c6;--white:#faf8f4}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -32,3 +37,21 @@ h2{font-size:clamp(48px,4.4vw,72px);line-height:1.13;margin-bottom:27px}.section
 @media(max-width:600px){body{font-size:17px}.shell{width:calc(100% - 40px)}.nav{height:68px}.wordmark{font-size:23px}.wordmark small{font-size:8px}.nav nav{font-size:13px}.nav-contact span{margin-inline-start:4px}.hero{padding-block:43px 54px;gap:34px;min-height:0}.eyebrow{font-size:9px;letter-spacing:.13em;margin-bottom:23px}.eyebrow-line{width:20px}h1{font-size:clamp(49px,12.1vw,67px);line-height:1.08;margin-bottom:22px}.lead{font-size:19px;line-height:1.55}.hero-actions{gap:19px}.hero-english{font-size:12px;margin-top:28px}.hero-art{padding-inline-end:10px}.photo-frame{height:450px;border-width:6px}.frame-top{top:13px;left:12px;right:12px;font-size:8px}.frame-caption{padding:12px 14px;font-size:13px}.frame-caption small{font-size:11px}.vertical-note{font-size:8px;left:-9px}.ticker .shell{justify-content:center;padding-block:15px}.ticker span:nth-of-type(2),.ticker span:nth-of-type(3),.ticker i{display:none}.section-pad{padding-block:66px}.section-label{font-size:14px}h2{font-size:clamp(43px,10vw,58px)}.section-lead{font-size:19px}.principles{grid-template-columns:1fr;margin-top:31px;gap:12px}.principles h3{margin:12px 0 4px}.principles p{margin-bottom:8px}.portrait-frame{height:520px}.about-copy p{font-size:18px}.english-panel{padding-block:66px}.english-panel h2{font-size:50px}.english-panel p{font-size:16px}.contact p:not(.eyebrow){font-size:19px}.contact-card{padding:25px}.contact-email{font-size:18px}.footer-grid{grid-template-columns:1fr;gap:28px}.footer-links{grid-column:auto;flex-direction:column}.footer-bottom{margin-top:40px}.policy-hero{padding:45px 0}.policy-hero-grid{grid-template-columns:minmax(0,1fr) 85px;gap:15px}.policy-hero-grid>img{width:85px;height:125px;border-width:3px}.policy-hero h1{font-size:44px}.policy-hero p:not(.eyebrow){font-size:16px}.policy-content{padding-block:55px}.policy-content section{gap:22px;padding-bottom:60px}.policy-content section+section{padding-top:60px}.policy-text h2{font-size:37px}.policy-text h3{font-size:20px}.policy-text p{font-size:17px}.policy-content #english .policy-text p{font-size:15px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.button{transition:none}}
 @media(max-width:600px){.hero-art{order:-1}}
+/* v2 (20/10/2026): English pages (dir=ltr) + language switch */
+.lang-switch{font-size:13px;letter-spacing:.04em;color:var(--muted)}
+.lang-switch:hover{color:var(--ink)}
+@media(max-width:900px){.nav nav a.lang-switch{display:inline}}
+html[dir=ltr] body{font-family:'DM Sans',Assistant,Arial,sans-serif}
+html[dir=ltr] h1,html[dir=ltr] h2{letter-spacing:-.04em}
+[dir=ltr] .skip{right:auto;left:10px}
+[dir=ltr] .eyebrow,[dir=ltr] .contact-email{text-align:left}
+[dir=ltr] .vertical-note{left:auto;right:-14px;transform:none}
+@media(max-width:600px){[dir=ltr] .vertical-note{left:auto;right:-9px}}
+/* the site has its own .skip link - hide the widget's duplicate */
+.brain-skip{display:none!important}
+/* v2 (20/10/2026): WCAG 2.0 AA contrast (axe-core 4.10.2) - small text only, large headings keep the original copper */
+.eyebrow,.section-label span:first-child,.principle-no,.contact-card-label{color:#8b5a3f}
+.policy-date{color:#5f6860!important}
+.ticker .shell{color:#61665f}
+.hero-english{color:#5d6861}
+.about .section-label,.about-copy .affiliation{color:#5b6862}

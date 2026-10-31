@@ -6,14 +6,173 @@
   <meta name="theme-color" content="#172521">
   <meta name="description" content="ארי (צ'רלס) אשכנזי - ליווי אישי בקנייה ובמכירה של נדל״ן יוקרה בנתניה. Charles Ashkenazi, luxury real estate in Netanya.">
   <title>ארי אשכנזי | נדל"ן יוקרה בנתניה</title>
+  <link rel="canonical" href="https://ari-nadlanil.com/">
+  <link rel="alternate" hreflang="he" href="https://ari-nadlanil.com/">
+  <link rel="alternate" hreflang="en" href="https://ari-nadlanil.com/en/">
+  <link rel="alternate" hreflang="x-default" href="https://ari-nadlanil.com/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Ari Ashkenazi">
+  <meta property="og:title" content="ארי אשכנזי | נדל&quot;ן יוקרה בנתניה">
+  <meta property="og:description" content="נתניה. להרגיש בבית עוד לפני המפתח. ליווי אישי בקנייה ובמכירה של נדל&quot;ן יוקרה בנתניה.">
+  <meta property="og:url" content="https://ari-nadlanil.com/">
+  <meta property="og:image" content="https://ari-nadlanil.com/assets/ari-hero.webp">
+  <meta property="og:locale" content="he_IL">
+  <meta property="og:locale:alternate" content="en_US">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "RealEstateAgent",
+    "name": "ארי (צ'רלס) אשכנזי",
+    "alternateName": "Ari (Charles) Ashkenazi",
+    "url": "https://ari-nadlanil.com/",
+    "image": "https://ari-nadlanil.com/assets/ari-hero.webp",
+    "email": "ari@ari-nadlanil.com",
+    "telephone": "+972-58-555-4201",
+    "areaServed": {"@type": "City", "name": "Netanya", "containedInPlace": {"@type": "Country", "name": "Israel"}},
+    "knowsLanguage": ["he", "en"],
+    "address": {"@type": "PostalAddress", "streetAddress": "רבי יהודה הנשיא 18, דירה 11", "addressLocality": "רמת גן", "postalCode": "5237660", "addressCountry": "IL"}
+  }
+  </script>
   <link rel="stylesheet" href="assets/site.css">
+<!-- AIOS 20/10/2026: negishut v1.0.0 (Brain, 3e2d01d3f9) with site colors; EN pages get English labels and ltr.
+     ═══════════════════════════════════════════════════════════════════
+     ערכת נגישות לדפי נחיתה - קטע הקוד שמדביקים בכל דף
+     מדביקים פעם אחת בתוך <head> של כל דף באתר.
+     אחרי הרצת setup.py השתמשו בקובץ output/a11y-snippet-ready.html
+
+     Zero-impact by default (Eden's directive, page-standard.md):
+     - Regular visitors see ONLY a small round a11y button (bottom-left).
+     - Focus outline appears via :focus-visible - keyboard users only.
+     - Skip-link hidden until keyboard-focused.
+     - All visual adjustments (text size / contrast / links / motion /
+       readable font) apply ONLY when chosen; saved in localStorage.
+     - The menu links to the accessibility statement (legal requirement).
+     ═══════════════════════════════════════════════════════════════════ -->
+<style>
+  /* Keyboard-only focus - mouse users never see this */
+  :focus-visible { outline: 3px solid #a66c4b !important; outline-offset: 2px !important; border-radius: 4px; }
+  /* Skip link - visible only on keyboard focus */
+  .brain-skip { position: fixed; top: -60px; right: 12px; z-index: 100000; background: #172521; color: #fff;
+    padding: 10px 18px; border-radius: 10px; font-size: 15px; text-decoration: none; transition: top .15s; }
+  .brain-skip:focus { top: 12px; }
+  /* Opt-in modes */
+  html.a11y-fs1 body { zoom: 1.12; } html.a11y-fs2 body { zoom: 1.25; }
+  html.a11y-contrast { filter: contrast(1.25); }
+  html.a11y-links a { text-decoration: underline !important; font-weight: 700 !important; }
+  html.a11y-nomotion *, html.a11y-nomotion *::before, html.a11y-nomotion *::after {
+    animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+  html.a11y-font body, html.a11y-font body * { font-family: Arial, Helvetica, sans-serif !important; }
+  /* The button + menu */
+  #brain-a11y-btn { position: fixed; bottom: 18px; left: 18px; z-index: 99999; width: 44px; height: 44px;
+    border-radius: 50%; border: none; cursor: pointer; background: #172521; color: #fff;
+    display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 10px rgba(23,37,33,.35); padding: 0; }
+  #brain-a11y-btn:hover { background: #a66c4b; }
+  #brain-a11y-menu { position: fixed; bottom: 72px; left: 18px; z-index: 99999; background: #fff; color: #172521;
+    border-radius: 14px; box-shadow: 0 6px 30px rgba(23,37,33,.25); padding: 14px; width: 230px; display: none;
+    direction: rtl; text-align: right; font-family: Arial, sans-serif; font-size: 14px; }
+  #brain-a11y-menu.open { display: block; }
+  #brain-a11y-menu h2 { font-size: 15px; margin: 0 0 10px; }
+  #brain-a11y-menu button { display: block; width: 100%; margin: 4px 0; padding: 8px 10px; border-radius: 8px;
+    border: 1px solid #d9d2c6; background: #f4f0e9; cursor: pointer; font-size: 13px; text-align: right; color: #172521; }
+  #brain-a11y-menu button[aria-pressed="true"] { background: #a66c4b; color: #fff; border-color: #a66c4b; }
+  #brain-a11y-menu a { display: block; margin-top: 10px; font-size: 12px; color: #a66c4b; }
+</style>
+<script>
+(function () {
+  var MODES = [
+    ["fs", "הגדלת טקסט", 2],            // cycles: off → fs1 → fs2
+    ["contrast", "ניגודיות מוגברת", 1],
+    ["links", "הדגשת קישורים", 1],
+    ["nomotion", "עצירת אנימציות", 1],
+    ["font", "גופן קריא", 1]
+  ];
+  var KEY = "brain_a11y";
+
+  function state() { try { return JSON.parse(localStorage.getItem(KEY) || "{}"); } catch (e) { return {}; } }
+  function apply(s) {
+    var h = document.documentElement;
+    h.classList.toggle("a11y-fs1", s.fs === 1); h.classList.toggle("a11y-fs2", s.fs === 2);
+    ["contrast", "links", "nomotion", "font"].forEach(function (m) { h.classList.toggle("a11y-" + m, !!s[m]); });
+  }
+
+  function build() {
+    if (document.getElementById("brain-a11y-btn")) return; // pasted twice - once is enough
+    // Skip link (target: <main> or first <h1>'s section)
+    if (!document.getElementById("brain-main")) {
+      var m = document.querySelector("main") || document.querySelector("h1");
+      if (m) m.id = m.id || "brain-main";
+    }
+    var skip = document.createElement("a");
+    skip.className = "brain-skip"; skip.href = "#" + ((document.querySelector("main,h1") || {}).id || "brain-main");
+    skip.textContent = "דילוג לתוכן"; document.body.prepend(skip);
+
+    var btn = document.createElement("button");
+    btn.id = "brain-a11y-btn"; btn.setAttribute("aria-label", "פתיחת תפריט נגישות");
+    btn.setAttribute("aria-expanded", "false"); btn.setAttribute("aria-controls", "brain-a11y-menu");
+    btn.innerHTML = '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="4.5" r="2.2" fill="currentColor"/><path d="M12 8c-3 0-5.5-.6-7-1l.5 2c1.5.5 3.5.8 5 .9v3.1l-2.3 6.2 1.9.8 2-5.5h-.2 2.2l2 5.5 1.9-.8L15.5 13V9.9c1.5-.1 3.5-.4 5-.9l.5-2c-1.5.4-4 1-7 1h-2z" fill="currentColor"/></svg>';
+
+    var menu = document.createElement("div");
+    menu.id = "brain-a11y-menu"; menu.setAttribute("role", "dialog"); menu.setAttribute("aria-label", "אפשרויות נגישות");
+    menu.innerHTML = "<h2>נגישות</h2>";
+    MODES.forEach(function (mode) {
+      var b = document.createElement("button");
+      b.textContent = mode[1]; b.dataset.mode = mode[0]; b.setAttribute("aria-pressed", "false");
+      b.onclick = function () {
+        var s = state();
+        if (mode[0] === "fs") { s.fs = ((s.fs || 0) + 1) % 3; b.setAttribute("aria-pressed", s.fs ? "true" : "false"); }
+        else { s[mode[0]] = !s[mode[0]]; b.setAttribute("aria-pressed", s[mode[0]] ? "true" : "false"); }
+        localStorage.setItem(KEY, JSON.stringify(s)); apply(s);
+      };
+      menu.appendChild(b);
+    });
+    var reset = document.createElement("button");
+    reset.textContent = "איפוס"; reset.onclick = function () { localStorage.removeItem(KEY); apply({});
+      menu.querySelectorAll("[aria-pressed]").forEach(function (b) { b.setAttribute("aria-pressed", "false"); }); };
+    menu.appendChild(reset);
+    var link = document.createElement("a");
+    link.href = "https://ari-nadlanil.com/negishut.html"; link.textContent = "הצהרת נגישות";
+    menu.appendChild(link);
+
+    // Permanent text link in the page footer (legal best practice: the statement
+    // must be reachable even if this widget fails to load elsewhere). Inherits
+    // the footer's own styling - visually just one more footer word.
+    var foot = document.querySelector("footer");
+    if (foot && !foot.querySelector('a[href*="negishut"]')) {
+      var fl = document.createElement("a");
+      fl.href = "https://ari-nadlanil.com/negishut.html"; fl.textContent = "הצהרת נגישות";
+      fl.style.color = "inherit"; fl.style.marginRight = "6px";
+      foot.appendChild(document.createTextNode(" · "));
+      foot.appendChild(fl);
+    }
+
+    btn.onclick = function () {
+      var open = menu.classList.toggle("open");
+      btn.setAttribute("aria-expanded", open ? "true" : "false");
+    };
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && menu.classList.contains("open")) { menu.classList.remove("open"); btn.setAttribute("aria-expanded", "false"); btn.focus(); }
+    });
+    document.body.appendChild(btn); document.body.appendChild(menu);
+
+    // Restore saved prefs + reflect on buttons
+    var s = state(); apply(s);
+    menu.querySelectorAll("[data-mode]").forEach(function (b) {
+      var m = b.dataset.mode;
+      b.setAttribute("aria-pressed", (m === "fs" ? !!s.fs : !!s[m]) ? "true" : "false");
+    });
+  }
+
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", build);
+  else build();
+})();
+</script>
 </head>
 <body>
   <a class="skip" href="#main">דילוג לתוכן</a>
   <header class="site-header">
     <div class="shell nav">
       <a class="wordmark" href="index.html" aria-label="ארי אשכנזי, עמוד הבית"><span>ARI<span class="mark-dot">.</span></span><small>ASHKENAZI</small></a>
-      <nav aria-label="ניווט ראשי"><a href="#approach">הגישה שלי</a><a href="#about">קצת עליי</a><a href="#contact" class="nav-contact">יצירת קשר <span aria-hidden="true">↖</span></a></nav>
+      <nav aria-label="ניווט ראשי"><a href="#approach">הגישה שלי</a><a href="#about">קצת עליי</a><a href="en/" lang="en" hreflang="en" class="lang-switch">English</a><a href="#contact" class="nav-contact">יצירת קשר <span aria-hidden="true">↖</span></a></nav>
     </div>
   </header>
 
@@ -64,6 +223,6 @@
     <section class="contact section-pad" id="contact"><div class="shell contact-grid"><div><p class="eyebrow">LET'S TALK / בואו נדבר</p><h2>הצעד הבא<br><em>מתחיל בשיחה.</em></h2><p>יש לכם ולהן שאלה על קנייה או מכירה בנתניה? כתבו לי בכמה מילים מה אתם ואתן מחפשים, ואחזור אליכם ואליכן.</p></div><div class="contact-card"><div class="contact-person"><img src="assets/ari-contact.webp" alt="פורטרט של ארי אשכנזי" width="1350" height="1800" loading="lazy" decoding="async"><div><strong>ארי אשכנזי</strong><span lang="en">Ari Ashkenazi</span></div></div><span class="contact-card-label">DIRECT CONTACT</span><a class="contact-email" href="mailto:ari@ari-nadlanil.com">ari@ari-nadlanil.com <span aria-hidden="true">↖</span></a><div class="contact-rule"></div><span>טלפון: <a href="tel:+972585554201" dir="ltr">058-5554201</a></span><span lang="en" dir="ltr">English and Hebrew</span></div></div></section>
   </main>
 
-  <footer class="site-footer"><div class="shell footer-grid"><div><a class="wordmark footer-mark" href="index.html"><span>ARI<span class="mark-dot">.</span></span><small>ASHKENAZI</small></a><p>נדל"ן יוקרה בנתניה · Luxury real estate in Netanya</p></div><div class="footer-legal"><p>ארי (צ'רלס) אשכנזי / Charles Ashkenazi</p><p>עוסק מורשה 339792376</p><p>רבי יהודה הנשיא 18, דירה 11, רמת גן 5237660</p><p><a href="mailto:ari@ari-nadlanil.com">ari@ari-nadlanil.com</a> · <a href="tel:+972585554201" dir="ltr">058-5554201</a></p></div><div class="footer-links"><a href="privacy.html">מדיניות פרטיות / Privacy Policy</a><a href="#main">חזרה למעלה ↑</a></div></div><div class="shell footer-bottom"><span>© 2026 ARI ASHKENAZI</span><span>NETANYA · ISRAEL</span></div></footer>
+  <footer class="site-footer"><div class="shell footer-grid"><div><a class="wordmark footer-mark" href="index.html"><span>ARI<span class="mark-dot">.</span></span><small>ASHKENAZI</small></a><p>נדל"ן יוקרה בנתניה · Luxury real estate in Netanya</p></div><div class="footer-legal"><p>ארי (צ'רלס) אשכנזי / Charles Ashkenazi</p><p>עוסק מורשה 339792376</p><p>רבי יהודה הנשיא 18, דירה 11, רמת גן 5237660</p><p><a href="mailto:ari@ari-nadlanil.com">ari@ari-nadlanil.com</a> · <a href="tel:+972585554201" dir="ltr">058-5554201</a></p></div><div class="footer-links"><a href="privacy.html">מדיניות פרטיות / Privacy Policy</a><a href="negishut.html">הצהרת נגישות / Accessibility</a><a href="en/" lang="en" hreflang="en">English</a><a href="#main">חזרה למעלה ↑</a></div></div><div class="shell footer-bottom"><span>© 2026 ARI ASHKENAZI</span><span>NETANYA · ISRAEL</span></div></footer>
 </body>
 </html>
